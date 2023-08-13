@@ -22,6 +22,7 @@ def captcha_process(cap_username,cap_password):
 
     # Initialize the Edge WebDriver using the EdgeChromiumDriverManager
     browser = Edge(executable_path=EdgeChromiumDriverManager().install(), options=options) # Optional argument, if not specified will search path.
+    browser.maximize_window()
     browser.get('https://login.teletype.team/')
     time.sleep(3)
     inputElement =browser.find_element("name",'username')
@@ -43,9 +44,9 @@ def captcha_process(cap_username,cap_password):
     #inputElement.send_keys('psiqtj#6393')
     #Vijay
     #inputElement.send_keys('ywcpad#7109')
-    time.sleep(1)
+    time.sleep(20)
     pyautogui.press('enter')
-    time.sleep(5)
+    time.sleep(3)
 
     browser.execute_script("""
     function ClickConnect(){
@@ -61,11 +62,12 @@ def captcha_process(cap_username,cap_password):
     """)
     time.sleep(5)
 
+    #Select Deployment
     browser.execute_script("""
     function ClickConnect(){
         console.log(" "); 
         try {
-          document.querySelector("#root > div > div._1picb7i > div > div > div > div > div > div > div > div._1s8w8pn > div > div > div > div > div > div:nth-child(2) > form > div._ona0v3s > button._37ran8t > div._1ve0kk4b").click();
+            document.querySelector("#root > div > div._1picb7i > div > div > div > div > div > div > div > div._1s8w8pn > div > div > div > div > div > div:nth-child(2) > div > div:nth-child(2) > div._1ve0kk4b").click();
     console.error("working");
     } catch (e) {
         console.error(" ");
@@ -75,6 +77,7 @@ def captcha_process(cap_username,cap_password):
     """)
     time.sleep(5)
 
+    #New Session Conform
     browser.execute_script("""
     function ClickConnect(){
         console.log(" "); 
@@ -86,56 +89,6 @@ def captcha_process(cap_username,cap_password):
         }
         }
         setInterval(ClickConnect,6000)
-
-    """)
-    time.sleep(5)
-    browser.execute_script("""
-    function ClickConnect(){
-        console.log(" "); 
-        try {
-            document.querySelector("#root > div > div._1picb7i > div > div > div > div > div > div > div > div._1s8w8pn > div > div > div > div > div > div:nth-child(2) > div > div:nth-child(1) > div > div._1ve0kk4b").click();
-    console.error("working");
-    } catch (e) {
-        console.error(" ");
-        }
-        }
-        setInterval(ClickConnect,5000)
-    """)
-    time.sleep(5)
-    browser.execute_script("""
-    function ClickConnect(){
-        console.log(" "); 
-        try {
-            document.querySelector("#root > div > div._1picb7i > div > div > div > div > div > div > div > div._1s8w8pn > div > div > div > div > div > div:nth-child(2) > form > div._ona0v3s > button._37ran8t > div._1ve0kk4b").click();
-    console.error("working");
-    } catch (e) {
-        console.error(" ");
-        }
-        }
-        setInterval(ClickConnect,6000)
-
-    """)
-    time.sleep(5)
-    browser.execute_script("""
-    function ClickConnect(){
-        console.log(" "); 
-        try {
-            document.querySelector("#root > div > div._1picb7i > div > div > div > div > div > div > div > div._1s8w8pn > div > div > div > div > div > div:nth-child(2) > form > div._ona0v3s > button > div:nth-child(2)").click();
-    console.error("working");
-    } catch (e) {
-        console.error(" ");
-        }
-        }
-        setInterval(ClickConnect,6000)
-
-    """)
-    browser.execute_script("""
-    try {
-            document.querySelector("#root > div > div._1picb7i > div > div > div > div > div > div > div > div._1s8w8pn > div > div > div > div > div > div:nth-child(2) > form > div._ona0v3s > button > div:nth-child(2)").click();
-    console.error("working");
-    } catch (e) {
-        console.error(" ");
-        }
     """)
     time.sleep(5)
     num =999999
@@ -144,6 +97,21 @@ def captcha_process(cap_username,cap_password):
     for x in itertools.repeat(None, num):
         try:
             current_url1=browser.current_url
+            if(current_url1=="https://exela.teletype.team/item/refresh/timeout"):
+                #click Time out
+                browser.execute_script("""
+                        function ClickConnect(){
+                         console.log(" "); 
+                        try {
+                            document.querySelector("#root > div > div._1picb7i > div > div > div > div > div > div > div > div._1s8w8pn > div > div > div > div > div > div:nth-child(2) > form > div._ona0v3s > button > div._1ve0kk4b").click();
+                            console.error("working");
+                        } catch (e) {
+                        console.error(" ");
+                        }
+                        }
+                         setInterval(ClickConnect,6000)
+                        """)
+                time.sleep(2)
             if(current_url1=="https://exela.teletype.team/item/load"):
                  # Replace with the URL of the webpage you want to capture
                  pass
@@ -187,7 +155,7 @@ def captcha_process(cap_username,cap_password):
 
                 # Extract the data from the input field
                 data = input_field_element.get_attribute('value')
-                time.sleep(2)
+                time.sleep(1)
                 take_screenshot_with_coords_and_save(x1, y1, x2, y2, file_path,data)    
 
             elif(current_url1=="https://exela.teletype.team/item/3"):
@@ -205,7 +173,7 @@ def captcha_process(cap_username,cap_password):
 
                 # Extract the data from the input field
                 data = input_field_element.get_attribute('value')
-                time.sleep(2)
+                time.sleep(1)
                 take_screenshot_with_coords_and_save(x1, y1, x2, y2, file_path,data)
 
             elif(current_url1=="https://exela.teletype.team/item/4"):
@@ -224,7 +192,7 @@ def captcha_process(cap_username,cap_password):
                 # Extract the data from the input field
                 data = input_field_element.get_attribute('value')
                 # Take the screenshot and save it in the specified folder
-                time.sleep(2)
+                time.sleep(1)
                 take_screenshot_with_coords_and_save(x1, y1, x2, y2, file_path,data)     
     
             elif(current_url1=="https://exela.teletype.team/item/5"):
@@ -243,7 +211,7 @@ def captcha_process(cap_username,cap_password):
 
                 # Extract the data from the input field
                 data = input_field_element.get_attribute('value')
-                time.sleep(2)
+                time.sleep(1)
                 # Take the screenshot and save it in the specified folder
                 take_screenshot_with_coords_and_save(x1, y1, x2, y2, file_path,data)
             else:
@@ -277,7 +245,7 @@ def captcha_process(cap_username,cap_password):
             txt_len = len(single_line_text)
             print(type(txt_len))
             print(txt_len)
-            time.sleep(4)
+            time.sleep(1)
             process_enter(txt_len, single_line_text,data)
 
         def process_enter(txt_len,single_line_text,data):
